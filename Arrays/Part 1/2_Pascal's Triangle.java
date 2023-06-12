@@ -1,3 +1,4 @@
+import java.util.*;
 class Solution {
     public List<List<Integer>> generate(int n) {
         List<List<Integer>> ans=new ArrayList<>(); 
