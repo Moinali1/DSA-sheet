@@ -1,18 +1,11 @@
-import java.util.* ;
-import java.io.*; 
-class Solution
-{
-    // arr[]: Input Array
-    // N : Size of the Array arr[]
-    //Function to count inversions in the array.
-    static long inversionCount(long arr[], long N)
-    {
-        int n=(int)N;
-        return sort(arr,0,n);   
+class Solution {
+    public int reversePairs(int[] nums) {
+      int n=nums.length;
+      return (int)sort(nums,0,n);    
     }
-    public static long sort(long[] arr,int s,int e)
+    public long sort(int[] arr,int s,int e)
     {
-        long count=0;
+        int count=0;
         if(e-s==1)return count;
         int m=s+(e-s)/2;
         count+=sort(arr,s,m);
@@ -20,11 +13,20 @@ class Solution
         count+=countInv(arr,s,m,e);
         return count;
     }
-    public static long countInv(long[] arr,int s,int m,int e){
-        long temp[]= new long[e-s];
-        int i=s,j=m,k=0;
-        
-        i=s;j=m;long count=0;
+    public static long countInv(int[] arr,int s,int m,int e){
+        int temp[]= new int[e-s];
+        int i=s,j=m,k=0;long count=0;
+        while(i<m && j<e)
+        {
+            double num=((double)arr[i]/2);
+            if(num>arr[j])
+            {
+                count+=m-i;
+                j++;
+            }
+            else i++;
+        }
+        i=s;j=m;
         while(i<m && j<e)
         {
             if(arr[i]<=arr[j])
@@ -35,7 +37,6 @@ class Solution
             else
             {
                 temp[k]=arr[j];
-                count+=m-i;
                 j++;
             }
             k++;
