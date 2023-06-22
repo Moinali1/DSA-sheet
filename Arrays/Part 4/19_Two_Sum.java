@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
       int n=nums.length;
@@ -11,4 +13,4 @@ class Solution {
     }
 }
 
-https://leetcode.com/problems/two-sum/description/
+// https://leetcode.com/problems/two-sum/description/
