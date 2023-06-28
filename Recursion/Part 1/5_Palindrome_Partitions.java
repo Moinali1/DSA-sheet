@@ -32,3 +32,48 @@ class Solution {
         return true;
     }
 }
+
+
+
+
+// we can do like this also
+class Soluton {
+    static ArrayList<ArrayList<String>> allPalindromicPerms(String S) {
+        ArrayList<ArrayList<String>> ans=new ArrayList<>();
+        ArrayList<String> list=new ArrayList<>();
+        helper(S,ans,list);
+        return ans;
+    }
+    public static void helper(String S,ArrayList<ArrayList<String>>ans,ArrayList<String> ongoing)
+    {
+        if(S.isEmpty())
+        {
+            ans.add(new ArrayList<>(ongoing));
+            return;
+        }
+        
+        for(int i=1;i<=S.length();i++)
+        {
+            String cur=S.substring(0,i);
+            if(pail(cur))
+            {
+                ongoing.add(cur);
+                helper(S.substring(i),ans,ongoing);
+                ongoing.remove(ongoing.size()-1);
+            }
+        }
+    }
+    public static boolean pail(String s)
+    {
+        int st=0;
+        int e=s.length()-1;
+        while(st<e)
+        {
+           if(s.charAt(st)!=s.charAt(e))
+           return false;
+           st++;
+           e--;
+        }
+        return true;
+    }
+};

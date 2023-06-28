@@ -1,6 +1,7 @@
 class MinStack {
     Long min=(long)0;    
     Stack<Long> st= new Stack<>();
+    
 
     public void push(int value) {
         long val=(long)value;
@@ -29,6 +30,7 @@ class MinStack {
         return min.intValue();
     }
 }
+
 
 
 // https://leetcode.com/problems/min-stack/description/
