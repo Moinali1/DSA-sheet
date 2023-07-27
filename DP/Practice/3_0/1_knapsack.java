@@ -1,3 +1,91 @@
+//Bottom up tabulation 
+class Solution 
+{ 
+    //Function to return max value that can be put in knapsack of capacity W.
+    static int knapSack(int W, int wt[], int val[], int n) 
+    { 
+        int dp[][]=new int[n+1][W+1];
+        
+        for(int i=wt[0];i<=W;i++)
+        {
+            if(W>=wt[0])
+            {
+                dp[0][i]=val[0];
+            }
+            else dp[0][i]=0;
+        }
+        
+        for(int i=1;i<n;i++)
+        {
+            for(int j=0;j<=W;j++)
+            {
+                int include=0;
+                if(j>=wt[i])
+                include=val[i]+dp[i-1][j-wt[i]];
+                int exclude=dp[i-1][j];
+                
+                dp[i][j]=Math.max(include,exclude);
+            }
+        }
+    
+        return dp[n-1][W];
+         
+    } 
+    // static int findKS(int W,int idx,int wt[], int val[],int[][] dp)
+    // {
+    //   if(idx==0)
+    //   {
+    //       if(W>=wt[0])return val[0];
+    //       return 0;
+    //   }
+    //   if(dp[idx][W]!=0)return dp[idx][W];
+       
+    //   int include=0;
+    //   if(W>=wt[idx])
+    //   include=val[idx]+findKS(W-wt[idx],idx-1,wt,val,dp);
+    //   int exclude=0+findKS(W,idx-1,wt,val,dp);
+       
+    //   dp[idx][W]=Math.max(include, exclude);
+    //   return dp[idx][W];
+    // }
+}
+
+
+
+//Top down approch
+class Solution 
+{ 
+    //Function to return max value that can be put in knapsack of capacity W.
+    static int ans=0;
+    static int knapSack(int W, int wt[], int val[], int n) 
+    { 
+        int dp[][]=new int[n+1][W+1];
+        
+        
+        return findKS(W,n-1,wt,val,dp);
+         
+    } 
+    static int findKS(int W,int idx,int wt[], int val[],int[][] dp)
+    {
+       if(idx==0)
+       {
+           if(W>=wt[0])return val[0];
+           return 0;
+       }
+       if(dp[idx][W]!=0)return dp[idx][W];
+       
+       int include=0;
+       if(W>=wt[idx])
+       include=val[idx]+findKS(W-wt[idx],idx-1,wt,val,dp);
+       int exclude=0+findKS(W,idx-1,wt,val,dp);
+       
+       dp[idx][W]=Math.max(include, exclude);
+       return dp[idx][W];
+    }
+}
+
+
+
 // recursive brute better
 
 class Solution 
