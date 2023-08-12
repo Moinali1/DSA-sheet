@@ -1,0 +1,48 @@
+//recursive TLE
+class Solution {
+    int i=0,j=0,k=0;
+	public boolean isInterLeave(String a,String b,String c)
+	{
+	    if(a.length()+b.length()!=c.length())return false;
+	    
+	    return getRes(0,0,0,a,b,c);
+	}
+	boolean getRes(int i,int j,int k,String a,String b,String c)
+	{
+	   if(k==c.length())return true;
+	    
+	   boolean left=false,right=false;
+	   if(i<a.length() && a.charAt(i)==c.charAt(k))
+	   {
+	       left=getRes(i+1,j,k+1,a,b,c);
+	   }
+	   if(j<b.length() && b.charAt(j)==c.charAt(k))
+	   {
+	       right=getRes(i,j+1,k+1,a,b,c);
+	   }
+	    return left || right;
+	}
+}
+
+
+
+//TC1 uncoment then see the pattern 
+
+// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB 
+// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC 
+// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB
+
+
+// TC2
+// WUZIFWOVYDDWYVVBURCZMGYJGFDXVTNUNNESLSPLWUIUPFXLZBKNHKWPPANLT 
+
+// EGURFWCSFMOXEQMRJOWRGHWLKOBMEAHKGCCNAEHHSVEYMQPXHLRNUNY 
+
+// WEGUZIURFFWOVYDWCDWSYFMOVVBXURCEZQMGYMJRJOGFWRDGXVHTNWUNLKNESOBLMSEAPLHWKGUCCNAEIHUPHSVEFXYMLQZPBKXNHHLKRWPPNANLTUNY
+
+// ?? same tc as 2 
+// WUZI
+
+// EGU
+
+// WEGUZIU
