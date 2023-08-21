@@ -1,4 +1,4 @@
-//Bottom up tabulations
+//Bottom up approach (tabulation)
 class Solution 
 { 
     
