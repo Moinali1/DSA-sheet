@@ -1,3 +1,5 @@
+https://practice.geeksforgeeks.org/problems/perfect-sum-problem5633/1
+
 class Solution{
 
 	public int perfectSum(int arr[],int n, int sum) 
@@ -26,4 +28,30 @@ class Solution{
         dp[idx][sum]=(incl+excl)% 1000000007;
         return dp[idx][sum];
     }
+}
+
+//bottom up
+class Solution{
+
+	public int perfectSum(int arr[],int n, int sum) 
+	{ 
+	    int mod= 1000000007; 
+	    int dp[][]=new int[n+1][sum+1];
+    
+       
+        dp[0][0]=1;
+        
+        for(int i=1;i<=n;i++){
+            for(int j=0;j<=sum;j++){
+                int incl=0,excl=0;
+                if(j>=arr[i-1])
+                    incl=(dp[i-1][j-arr[i-1]])%mod;
+                excl=dp[i-1][j]%mod;
+                
+                dp[i][j]=(incl+excl)%mod;
+                
+            }
+        }
+        return dp[n][sum]%mod;
+	} 
 }
