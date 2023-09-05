@@ -21,3 +21,4 @@ class Tree{
         getPaths(node.right,ongoing,ans);
         ongoing.remove(ongoing.size()-1);
     }
+}
