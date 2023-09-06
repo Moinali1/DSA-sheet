@@ -1,6 +1,6 @@
 class Tree
 {
-    //Function to return list containing elements of left view of binary tree.
+    
      ArrayList<Integer> leftView(Node root)
     {
         ArrayList<Integer> leftview= new ArrayList<>();
