@@ -1,3 +1,35 @@
+/O(1) amortized
+class MyQueue {
+    Stack<Integer> input= new Stack<>();
+    Stack<Integer> output= new Stack<>();
+
+    public void push(int x) {
+        input.push(x);    
+    }
+    
+    public int pop() {
+       if(output.isEmpty()) peek();
+       return output.pop(); 
+    }
+    
+    public int peek() {
+        if(output.isEmpty())
+            while(!input.isEmpty())output.push(input.pop());
+        
+        return output.peek();
+    }
+    
+    public boolean empty() {
+        return input.isEmpty() && output.isEmpty();
+    }
+}
+
+
+
+
+
+
+
 class MyQueue {
     Stack<Integer> pro=new Stack<>();
     Stack<Integer> unpro=new Stack<>();
