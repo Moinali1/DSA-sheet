@@ -28,6 +28,75 @@ class Solution {
     }
 }
 
+// Tries using memoization
+class Solution {
+    class Node{
+        Node[] nodes= new Node[26];
+        boolean eos=false;
+        Node(){}
+        Node(boolean eos){
+            this.eos=eos;
+        }
+        
+    }
+    
+    void insert(String s,Node head)
+    {
+        Node cur=head;
+        for(int i=0;i<s.length();i++)
+        {
+            if(cur.nodes[s.charAt(i)-'a']==null)
+                cur.nodes[s.charAt(i)-'a']=new Node();
+            cur=cur.nodes[s.charAt(i)-'a'];
+        }
+        cur.eos=true;
+    }
+
+    boolean search(String s,Node head)
+    {
+        Node cur=head;
+        for(int i=0;i<s.length();i++)
+        {
+            if(cur.nodes[s.charAt(i)-'a']==null)return false;
+            cur=cur.nodes[s.charAt(i)-'a'];
+        }
+        return cur.eos==true;
+    }
+
+    public boolean wordBreak(String s, List<String> wordDict) {
+        
+        Node head=new Node();
+        for(String i:wordDict)
+            insert(i,head);
+
+        HashMap<String,Boolean> dp= new HashMap<>();    
+
+        return getWordBreak(s,head,dp);
+    }
+    
+    boolean getWordBreak(String s,Node head,HashMap<String,Boolean> dp)
+    {
+        if(s.length()==0)return true;
+        Node cur=head;
+
+        if(dp.containsKey(s))return dp.get(s);
+        String substr="";
+
+        for(int i=1;i<=s.length();i++)
+        {
+            substr=s.substring(0,i);
+            if(search(substr,head))
+            {
+                if(getWordBreak(s.substring(i),head,dp))
+                {
+                    dp.put(substr,true);
+                    return true;
+                }
+            }
+        }
+        dp.put(substr,false);
+        return false;
+    }
 
 //Using Tries Getting TLE
 class Solution {
