@@ -1,3 +1,4 @@
+//Greedy Solution
 class Solution {
     public int jump(int[] nums) {
        int l=0,r=0;
