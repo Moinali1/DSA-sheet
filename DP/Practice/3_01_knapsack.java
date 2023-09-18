@@ -1,36 +1,72 @@
+// https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1
+
 //Bottom up approach (tabulation)
 class Solution 
 { 
-    
+    //Function to return max value that can be put in knapsack of capacity W.
     static int knapSack(int W, int wt[], int val[], int n) 
     { 
         int dp[][]=new int[n+1][W+1];
+    
         
-        for(int i=wt[0];i<=W;i++)
+        for(int i=1;i<=n;i++)
         {
-            if(W>=wt[0])
-            {
-                dp[0][i]=val[0];
-            }
-            else dp[0][i]=0;
-        }
-        
-        for(int i=1;i<n;i++)
-        {
-            for(int j=0;j<=W;j++)
+            for(int j=1;j<=W;j++)
             {
                 int include=0;
-                if(j>=wt[i])
-                include=val[i]+dp[i-1][j-wt[i]];
+                if(j>=wt[i-1])
+                include=val[i-1]+dp[i-1][j-wt[i-1]];
                 int exclude=dp[i-1][j];
                 
                 dp[i][j]=Math.max(include,exclude);
             }
         }
     
-        return dp[n-1][W];
+        return dp[n][W];
+    } 
+}
+
+
+class Solution 
+{ 
+    //Function to return max value that can be put in knapsack of capacity W.
+    static int ans=0;
+    static int knapSack(int W, int wt[], int val[], int n) 
+    { 
+        int dp[][]=new int[n+1][W+1];
+        
+        
+        return findKS(W,n,wt,val,dp);
          
     } 
+    static int findKS(int W,int idx,int wt[], int val[],int[][] dp)
+    {
+       if(idx==0 || W==0)
+       {
+           return 0;
+       }
+
+       if(dp[idx][W]!=0)return dp[idx][W];
+       
+       int include=0;
+            if(W>=wt[idx-1])
+            include=val[idx-1]+findKS(W-wt[idx-1],idx-1,wt,val,dp);
+       int exclude=0+findKS(W,idx-1,wt,val,dp);
+       
+       dp[idx][W]=Math.max(include, exclude);
+       return dp[idx][W];
+    }
+}
+
+
+
+
+
+
+
+
+
+
     // static int findKS(int W,int idx,int wt[], int val[],int[][] dp)
     // {
     //   if(idx==0)
@@ -48,7 +84,7 @@ class Solution
     //   dp[idx][W]=Math.max(include, exclude);
     //   return dp[idx][W];
     // }
-}
+// }
 
 
 

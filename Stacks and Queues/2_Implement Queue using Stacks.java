@@ -1,4 +1,4 @@
-/O(1) amortized
+//O(1) amortized
 class MyQueue {
     Stack<Integer> input= new Stack<>();
     Stack<Integer> output= new Stack<>();

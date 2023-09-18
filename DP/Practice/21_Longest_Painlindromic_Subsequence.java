@@ -3,6 +3,7 @@ class Solution {
        int dp[][]= new int[s.length()+1][s.length()+1];
 
         for(int i=0;i<=s.length();i++)dp[i][i]=1;
+        
         for(int i=s.length();i>=0;i--)
         {
             for(int j=i+1;j<s.length();j++)

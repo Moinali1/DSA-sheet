@@ -18,3 +18,4 @@ class Solution {
     }
 }
 
+https://leetcode.com/problems/simplify-path/solutions/25686/java-10-lines-solution-with-stack/

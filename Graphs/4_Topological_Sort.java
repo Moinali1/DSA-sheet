@@ -20,6 +20,7 @@ class Solution
     {
         vis[ele]=true;
         for(int i=0;i<adj.get(ele).size();i++)
+        
         {
             if(!vis[adj.get(ele).get(i)]){
                 getTopo(adj.get(ele).get(i),V,vis,adj,st);
