@@ -41,3 +41,6 @@ public String convert(String s, int nRows) {
     return sb[0].toString();
 }
 }
+
+//gfg
+// https://practice.geeksforgeeks.org/problems/concatenation-of-zig-zag-string-in-n-rows0308/1
