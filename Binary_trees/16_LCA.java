@@ -12,3 +12,4 @@ class Solution {
         return left!=null&&right!=null?node:left==null?right:left;
     }
 }
+// lowest common ancestor
