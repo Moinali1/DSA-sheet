@@ -16,7 +16,7 @@ public class DisJointSet_Imple {
        public int findPrnt(int node)
         {
             if(node==parent[node])return node;
-            return parent[node]=findPrnt(node-1);
+            return parent[node]=findPrnt(parent[node]);
         }
 
         public void unionByRank(int u,int v)
