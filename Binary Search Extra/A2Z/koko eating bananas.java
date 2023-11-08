@@ -1,3 +1,4 @@
+//similar to aggresive cow
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
        int s=1,e=0;
@@ -20,4 +21,5 @@ class Solution {
        return s;
     }
 }
-//similar to aggresive cow
+
+// koko eating bananas
