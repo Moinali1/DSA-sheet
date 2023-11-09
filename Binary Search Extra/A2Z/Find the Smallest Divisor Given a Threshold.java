@@ -1,3 +1,4 @@
+
 class Solution {
     public int smallestDivisor(int[] nums, int threshold) {
        int s=1,e=0;
