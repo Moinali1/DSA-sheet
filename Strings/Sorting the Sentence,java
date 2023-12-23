@@ -1,0 +1,20 @@
+class Solution {
+    public String sortSentence(String s) {
+     String[] str=s.split(" ");//creating an array of string
+     String[] newstr=new String[str.length];
+     for(int i=0;i<str.length ;i++)
+    {
+        int a=str[i].charAt(str[i].length()-1);//taking last char of the word in the array
+        str[i]=str[i].substring(0,str[i].length()-1)+" ";//replacing the last digit with spaces
+        newstr[a-48-1]=str[i]; //adding in newstr to its correct index
+     }    
+        StringBuilder res=new StringBuilder("");
+        for(String i:newstr)
+        {
+            res.append(i);
+        }//adding the word to stringbuilder
+        res.deleteCharAt(res.length()-1);//there will be an extra space due to the 6th line in the function, removing it. 
+        return res.toString();//returning the final string nt converting string builder to string
+
+    }
+}
