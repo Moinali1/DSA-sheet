@@ -1,0 +1,22 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        int len= nums.length;
+        int ttlSets=(int)Math.pow(2,len);
+
+        List<List<Integer>> ans= new ArrayList<>();
+        ans.add(new ArrayList(Arrays.asList()));
+
+        for(int i=1;i<ttlSets;i++)
+        {
+            List<Integer> ongoing= new ArrayList<>();
+            int num=i;
+            for(int j=0;j<len;j++)
+            {
+                boolean jBitSet=(num&(1<<j))==0?false:true;
+                if(jBitSet)ongoing.add(nums[len-j-1]);
+            }
+            ans.add(new ArrayList<>(ongoing));
+        }
+        return ans;
+    }
+}
